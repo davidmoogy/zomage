@@ -5,5 +5,5 @@ nixPkgs = ["dotnet-sdk_8"]
 cmds = ["dotnet restore", "dotnet publish -c Release -o ./publish"]
 
 [start]
-cmd = "cd ./publish && dotnet zomage.dll --urls http://0.0.0.0:$PORT"
+cmd = "cd ./publish && ASPNETCORE_URLS=http://0.0.0.0:$PORT dotnet zomage.dll"
 

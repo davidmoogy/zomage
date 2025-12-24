@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "dotnet zomage.dll --urls http://0.0.0.0:$PORT",
+    "startCommand": "cd ./publish && ASPNETCORE_URLS=http://0.0.0.0:$PORT dotnet zomage.dll",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }

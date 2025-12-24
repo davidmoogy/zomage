@@ -7,8 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Add Database
+var dbPath = Environment.GetEnvironmentVariable("DATABASE_PATH") ?? "zomage.db";
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=zomage.db"));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 var app = builder.Build();
 
@@ -47,7 +48,14 @@ app.MapControllerRoute(
 var port = Environment.GetEnvironmentVariable("PORT");
 if (!string.IsNullOrEmpty(port))
 {
+    app.Urls.Clear();
     app.Urls.Add($"http://0.0.0.0:{port}");
+}
+else
+{
+    // Default ports for local development
+    app.Urls.Add("http://localhost:5000");
+    app.Urls.Add("https://localhost:5001");
 }
 
 app.Run();
