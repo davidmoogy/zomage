@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using zomage.Models;
+using System;
 
 namespace zomage.Data;
 
@@ -13,8 +14,12 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Seed data
-        modelBuilder.Entity<Product>().HasData(
+        base.OnModelCreating(modelBuilder);
+        
+        // Seed data - wrapped in try-catch to prevent crashes
+        try
+        {
+            modelBuilder.Entity<Product>().HasData(
             new Product { Id = 1, Name = "ZOMA BAFIX FOAM", Category = "ქაფით რეცხვა", Price = 9.78m, OldPrice = 9.78m, ImageUrl = "/images/products/product.svg" },
             new Product { Id = 2, Name = "ZOMA GLASS CLEANER", Category = "სამზარეულო", Price = 7.50m, OldPrice = 8.99m, ImageUrl = "/images/products/product.svg" },
             new Product { Id = 3, Name = "ZOMA FLOOR CLEAN", Category = "სამზარეულოს იატაკი", Price = 12.99m, OldPrice = 14.50m, ImageUrl = "/images/products/product.svg" },

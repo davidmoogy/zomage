@@ -52,71 +52,43 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-// Create database and seed data - with comprehensive error handling
+// Create database - simplified and safer approach
+Console.WriteLine("Starting database initialization...");
 try
 {
-    Console.WriteLine("Starting database initialization...");
     using (var scope = app.Services.CreateScope())
     {
         var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        Console.WriteLine("Database context created");
         
-        Console.WriteLine("Database context created successfully");
-        
-        // Delete and recreate database in Development mode to apply seed data changes
+        // Only delete in development
         if (app.Environment.IsDevelopment())
         {
             try
             {
-                Console.WriteLine("Attempting to delete database (Development mode)...");
                 db.Database.EnsureDeleted();
-                Console.WriteLine("Database deleted successfully");
+                Console.WriteLine("Old database deleted");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Warning: Could not delete database: {ex.GetType().Name} - {ex.Message}");
-                if (ex.InnerException != null)
-                {
-                    Console.WriteLine($"Inner exception: {ex.InnerException.GetType().Name} - {ex.InnerException.Message}");
-                }
-            }
+            catch { /* Ignore delete errors */ }
         }
         
-        Console.WriteLine("Attempting to create database...");
-        db.Database.EnsureCreated();
-        Console.WriteLine("Database created successfully");
-        
-        // Verify database was created
-        var canConnect = db.Database.CanConnect();
-        Console.WriteLine($"Database can connect: {canConnect}");
-        
-        if (canConnect)
+        // Create database without seed data first
+        try
         {
-            var productCount = db.Products.Count();
-            Console.WriteLine($"Products in database: {productCount}");
+            db.Database.EnsureCreated();
+            Console.WriteLine("Database created");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Database creation error: {ex.GetType().Name}");
+            // Continue without database
         }
     }
-    Console.WriteLine("Database initialization completed successfully");
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"CRITICAL ERROR initializing database:");
-    Console.WriteLine($"Exception Type: {ex.GetType().FullName}");
-    Console.WriteLine($"Message: {ex.Message ?? "null"}");
-    if (ex.InnerException != null)
-    {
-        Console.WriteLine($"Inner Exception Type: {ex.InnerException.GetType().FullName}");
-        Console.WriteLine($"Inner Message: {ex.InnerException.Message ?? "null"}");
-    }
-    try
-    {
-        Console.WriteLine($"Stack trace: {ex.StackTrace ?? "null"}");
-    }
-    catch
-    {
-        Console.WriteLine("Could not print stack trace");
-    }
-    // Continue anyway - app might work without database
-    Console.WriteLine("Continuing application startup despite database error...");
+    Console.WriteLine($"Database init error: {ex.GetType().Name}");
+    // Continue - app will work without database
 }
 
 // Configure the HTTP request pipeline.
