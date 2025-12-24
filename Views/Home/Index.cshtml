@@ -1,0 +1,350 @@
+﻿@model List<zomage.Models.Product>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<header>
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="header-logo">
+            <img src="~/images/logo.svg" alt="ZOMA Logo">
+        </div>
+
+        <!-- Navigation -->
+        <nav class="header-nav">
+            <a href="#" class="nav-link" data-ka="მთავარი" data-en="Home">მთავარი</a>
+            <a href="#" class="nav-link" data-ka="პროდუქცია" data-en="Products">პროდუქცია</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link dropdown-toggle">
+                    <span data-ka="მომხარებლისთვის" data-en="For Customers">მომხარებლისთვის</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#" data-ka="წესები და პირობები" data-en="Terms and Conditions">წესები და პირობები</a>
+                    <a href="#" data-ka="კონფედენციალობის პოლიტიკა" data-en="Privacy Policy">კონფედენციალობის პოლიტიკა</a>
+                    <a href="#" data-ka="ნივთის დაბრუნების პოლიტიკა" data-en="Return Policy">ნივთის დაბრუნების პოლიტიკა</a>
+                    <a href="#" data-ka="ხშირად დასმული კითხვები" data-en="FAQ">ხშირად დასმული კითხვები</a>
+                </div>
+            </div>
+            <a href="#" class="nav-link" data-ka="ჩვენ შესახებ" data-en="About Us">ჩვენ შესახებ</a>
+            <a href="#" class="nav-link" data-ka="სიახლეები" data-en="News">სიახლეები</a>
+            <a href="#" class="nav-link" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a>
+        </nav>
+
+        <!-- Icons -->
+        <div class="header-icons">
+            <!-- Search -->
+            <button class="icon-btn" id="search-btn">
+               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.77277 13.091C6.28641 13.091 5.02859 12.576 3.99932 11.5462C2.97004 10.5164 2.45514 9.25859 2.45459 7.77277C2.45404 6.28695 2.96895 5.02913 3.99932 3.99932C5.02968 2.9695 6.2875 2.45459 7.77277 2.45459C9.25804 2.45459 10.5161 2.9695 11.547 3.99932C12.578 5.02913 13.0926 6.28695 13.091 7.77277C13.091 8.37277 12.9955 8.93868 12.8046 9.4705C12.6137 10.0023 12.3546 10.4728 12.0273 10.8819L16.6091 15.4637C16.7591 15.6137 16.8341 15.8046 16.8341 16.0364C16.8341 16.2682 16.7591 16.4591 16.6091 16.6091C16.4591 16.7591 16.2682 16.8341 16.0364 16.8341C15.8046 16.8341 15.6137 16.7591 15.4637 16.6091L10.8819 12.0273C10.4728 12.3546 10.0023 12.6137 9.4705 12.8046C8.93868 12.9955 8.37277 13.091 7.77277 13.091ZM7.77277 11.4546C8.7955 11.4546 9.66495 11.0968 10.3811 10.3811C11.0973 9.6655 11.4551 8.79604 11.4546 7.77277C11.454 6.7495 11.0962 5.88032 10.3811 5.16523C9.66604 4.45014 8.79659 4.09204 7.77277 4.09095C6.74895 4.08986 5.87977 4.44795 5.16523 5.16523C4.45068 5.8825 4.09259 6.75168 4.09095 7.77277C4.08932 8.79386 4.44741 9.66332 5.16523 10.3811C5.88304 11.099 6.75223 11.4568 7.77277 11.4546Z" fill="#2E4790"/>
+               </svg>
+            </button>
+
+            <!-- Cart (Desktop only) -->
+            <a href="/Home/Cart" class="icon-btn cart-btn desktop-only">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="18.5008" height="18.5008" fill="white"/>
+                    <path d="M2.14826 1.75761C2.22109 1.73608 2.29746 1.7291 2.37299 1.73709C2.44852 1.74508 2.52174 1.76787 2.58846 1.80417C2.65518 1.84046 2.71409 1.88955 2.76184 1.94862C2.80958 2.00769 2.84522 2.07559 2.86671 2.14844L3.29068 3.58457H14.5878C16.0062 3.58457 17.0892 4.90815 16.6807 6.29032L15.4049 10.6072C15.1335 11.5268 14.2709 12.1412 13.312 12.1412H6.2539C5.29494 12.1412 4.43311 11.5268 4.16099 10.6072L1.7582 2.47606C1.71491 2.32917 1.73167 2.1711 1.8048 2.03655C1.87793 1.902 2.00145 1.80119 2.14826 1.75761ZM4.81777 15.032C4.81777 14.572 5.00051 14.1308 5.32578 13.8055C5.65106 13.4802 6.09222 13.2975 6.55223 13.2975C7.01223 13.2975 7.4534 13.4802 7.77867 13.8055C8.10394 14.1308 8.28668 14.572 8.28668 15.032C8.28668 15.492 8.10394 15.9331 7.77867 16.2584C7.4534 16.5837 7.01223 16.7664 6.55223 16.7664C6.09222 16.7664 5.65106 16.5837 5.32578 16.2584C5.00051 15.9331 4.81777 15.492 4.81777 15.032ZM10.9847 15.032C10.9847 14.8042 11.0296 14.5786 11.1167 14.3682C11.2039 14.1578 11.3317 13.9666 11.4927 13.8055C11.6538 13.6445 11.845 13.5167 12.0554 13.4295C12.2659 13.3424 12.4914 13.2975 12.7192 13.2975C12.9469 13.2975 13.1725 13.3424 13.3829 13.4295C13.5934 13.5167 13.7846 13.6445 13.9456 13.8055C14.1067 13.9666 14.2344 14.1578 14.3216 14.3682C14.4088 14.5786 14.4536 14.8042 14.4536 15.032C14.4536 15.492 14.2709 15.9331 13.9456 16.2584C13.6203 16.5837 13.1792 16.7664 12.7192 16.7664C12.2592 16.7664 11.818 16.5837 11.4927 16.2584C11.1675 15.9331 10.9847 15.492 10.9847 15.032Z" fill="#2E4790"/>
+                </svg>
+                <span class="cart-badge">0</span>
+            </a>
+
+            <!-- User (Desktop only) -->
+            <a href="/Home/Profile" class="icon-btn desktop-only">
+                <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.2631 4.14478C12.1638 4.14478 11.1096 4.58145 10.3323 5.35874C9.555 6.13603 9.11832 7.19026 9.11832 8.28951C9.11832 9.38876 9.555 10.443 10.3323 11.2203C11.1096 11.9976 12.1638 12.4342 13.2631 12.4342C14.3623 12.4342 15.4165 11.9976 16.1938 11.2203C16.9711 10.443 17.4078 9.38876 17.4078 8.28951C17.4078 7.19026 16.9711 6.13603 16.1938 5.35874C15.4165 4.58145 14.3623 4.14478 13.2631 4.14478ZM8.842 14.6448C7.74275 14.6448 6.68852 15.0815 5.91123 15.8587C5.13394 16.636 4.69727 17.6903 4.69727 18.7895V20.1026C4.69727 20.9359 5.30074 21.6455 6.12306 21.7792C10.8514 22.5518 15.6747 22.5518 20.4031 21.7792C20.8007 21.7138 21.1623 21.5094 21.4234 21.2024C21.6845 20.8953 21.8282 20.5056 21.8288 20.1026V18.7895C21.8288 17.6903 21.3922 16.636 20.6149 15.8587C19.8376 15.0815 18.7834 14.6448 17.6841 14.6448H17.3083C17.102 14.6455 16.9016 14.6772 16.7071 14.7398L15.7499 15.0526C14.134 15.5802 12.3921 15.5802 10.7762 15.0526L9.81906 14.7398C9.62505 14.6776 9.42264 14.6455 9.2189 14.6448H8.842Z" fill="#2E4790"/>
+                </svg>
+            </a>
+
+            <!-- Language -->
+            <button class="icon-btn lang-btn" id="lang-btn">
+               <img src="~/images/ge.svg" alt="Language" id="lang-flag">
+            </button>
+
+            <!-- Hamburger Menu (Mobile only) -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="#" class="mobile-nav-link" data-ka="მთავარი" data-en="Home">მთავარი</a>
+            <a href="#" class="mobile-nav-link" data-ka="პროდუქცია" data-en="Products">პროდუქცია</a>
+            <div class="mobile-nav-dropdown">
+                <a href="#" class="mobile-nav-link mobile-dropdown-toggle">
+                    <span data-ka="მომხარებლისთვის" data-en="For Customers">მომხარებლისთვის</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </a>
+                <div class="mobile-dropdown-menu">
+                    <a href="#" data-ka="წესები და პირობები" data-en="Terms and Conditions">წესები და პირობები</a>
+                    <a href="#" data-ka="კონფედენციალობის პოლიტიკა" data-en="Privacy Policy">კონფედენციალობის პოლიტიკა</a>
+                    <a href="#" data-ka="ნივთის დაბრუნების პოლიტიკა" data-en="Return Policy">ნივთის დაბრუნების პოლიტიკა</a>
+                    <a href="#" data-ka="ხშირად დასმული კითხვები" data-en="FAQ">ხშირად დასმული კითხვები</a>
+                </div>
+            </div>
+            <a href="#" class="mobile-nav-link" data-ka="ჩვენ შესახებ" data-en="About Us">ჩვენ შესახებ</a>
+            <a href="#" class="mobile-nav-link" data-ka="სიახლეები" data-en="News">სიახლეები</a>
+            <a href="#" class="mobile-nav-link" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a>
+            <a href="/Home/Cart" class="mobile-nav-link">კალათა</a>
+            <a href="/Home/Profile" class="mobile-nav-link">პროფილი</a>
+        </nav>
+    </div>
+    </div>
+</header>
+
+<!-- Search Bar -->
+<div class="search-bar" id="search-bar">
+    <div class="search-bar-container">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.77277 13.091C6.28641 13.091 5.02859 12.576 3.99932 11.5462C2.97004 10.5164 2.45514 9.25859 2.45459 7.77277C2.45404 6.28695 2.96895 5.02913 3.99932 3.99932C5.02968 2.9695 6.2875 2.45459 7.77277 2.45459C9.25804 2.45459 10.5161 2.9695 11.547 3.99932C12.578 5.02913 13.0926 6.28695 13.091 7.77277C13.091 8.37277 12.9955 8.93868 12.8046 9.4705C12.6137 10.0023 12.3546 10.4728 12.0273 10.8819L16.6091 15.4637C16.7591 15.6137 16.8341 15.8046 16.8341 16.0364C16.8341 16.2682 16.7591 16.4591 16.6091 16.6091C16.4591 16.7591 16.2682 16.8341 16.0364 16.8341C15.8046 16.8341 15.6137 16.7591 15.4637 16.6091L10.8819 12.0273C10.4728 12.3546 10.0023 12.6137 9.4705 12.8046C8.93868 12.9955 8.37277 13.091 7.77277 13.091ZM7.77277 11.4546C8.7955 11.4546 9.66495 11.0968 10.3811 10.3811C11.0973 9.6655 11.4551 8.79604 11.4546 7.77277C11.454 6.7495 11.0962 5.88032 10.3811 5.16523C9.66604 4.45014 8.79659 4.09204 7.77277 4.09095C6.74895 4.08986 5.87977 4.44795 5.16523 5.16523C4.45068 5.8825 4.09259 6.75168 4.09095 7.77277C4.08932 8.79386 4.44741 9.66332 5.16523 10.3811C5.88304 11.099 6.75223 11.4568 7.77277 11.4546Z" fill="#888"/>
+        </svg>
+        <input type="text" id="search-input" data-ka="მოძებნე სასურველი პროდუქცია..." data-en="Search for products..." placeholder="მოძებნე სასურველი პროდუქცია...">
+        <button class="esc-btn" id="close-search">ESC</button>
+    </div>
+</div>
+
+<!-- Categories -->
+<div class="categories">
+    <div class="categories-container">
+        <a href="#" class="category-btn active">სამზარეულო</a>
+        <a href="#" class="category-btn">ავტოქიმია</a>
+        <a href="#" class="category-btn">საპნის და სადეზინფექციო საშუალებები</a>
+        <a href="#" class="category-btn">არომატიზატორები</a>
+        <a href="#" class="category-btn">თხევადი საპონი</a>
+        <a href="#" class="category-btn">ქაფით რეცხვა</a>
+        <a href="#" class="category-btn">შამპუნი</a>
+        <a href="#" class="category-btn">სამზარეულოს იატაკი</a>
+    </div>
+</div>
+
+<!-- Products -->
+<div class="products">
+    <div class="products-container">
+        @foreach (var product in Model)
+        {
+            <div class="product-card">
+                <div class="product-image">
+                    <button class="product-video-btn" data-product-name="@product.Name" data-product-id="@product.Id">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <img src="~/images/products/product.svg" alt="@product.Name">
+                    <button class="product-cart-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <span class="product-category">@product.Category</span>
+                    <h3 class="product-name">@product.Name</h3>
+                    <div class="product-prices">
+                        <span class="product-price">@product.Price.ToString("0.00") ₾</span>
+                        @if (product.OldPrice.HasValue)
+                        {
+                            <span class="product-old-price">@product.OldPrice.Value.ToString("0.00") ₾</span>
+                        }
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector" data-product-id="@product.Id">
+                            <span class="quantity-value">1</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                            <div class="quantity-dropdown">
+                                <div class="quantity-option" data-value="1">1</div>
+                                <div class="quantity-option" data-value="2">2</div>
+                                <div class="quantity-option" data-value="3">3</div>
+                                <div class="quantity-option" data-value="4">4</div>
+                                <div class="quantity-option" data-value="5">5</div>
+                                <div class="quantity-option" data-value="6">6</div>
+                                <div class="quantity-option" data-value="7">7</div>
+                                <div class="quantity-option" data-value="8">8</div>
+                                <div class="quantity-option" data-value="9">9</div>
+                                <div class="quantity-option" data-value="10">10</div>
+                            </div>
+                        </div>
+                        <button class="buy-now-btn">ყიდვა</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Video Modal -->
+<div class="video-modal" id="video-modal">
+    <div class="video-modal-overlay"></div>
+    <div class="video-modal-content">
+        <button class="video-modal-close" id="video-modal-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="video-modal-header">
+            <h3 class="video-modal-title" id="video-modal-title"></h3>
+        </div>
+        <div class="video-modal-body">
+            <div class="video-wrapper">
+                <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <!-- Logo Section -->
+            <div class="footer-logo">
+                <img src="~/images/logo.svg" alt="ZOMA Logo">
+            </div>
+
+            <!-- Addresses Section -->
+            <div class="footer-addresses">
+                <p>ბათუმი, კლინტექ, 68ა რუსთავის გზატკეცილი</p>
+                <p>თბილისი, კლინტექ, 68ა რუსთავის გზატკეცილი</p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="footer-contacts">
+                <div class="footer-contact-item">
+                    <div class="footer-icon-circle" style="background: white;">
+                        <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.31767 6.34403C9.0754 6.2281 7.89023 5.65488 7.6676 5.57759C7.44497 5.49387 7.28782 5.46166 7.12412 5.69353C6.96042 5.93183 6.49552 6.45996 6.35802 6.61454C6.21396 6.77555 6.07646 6.78843 5.83418 6.6725C5.59191 6.55657 4.81926 6.31183 3.896 5.50031C3.18228 4.88201 2.69119 4.10913 2.55368 3.87082C2.41618 3.63252 2.54059 3.51015 2.65845 3.38778C2.76976 3.27829 2.90072 3.11083 3.02513 2.97558C3.05787 2.93693 3.08406 2.89829 3.11026 2.85964C3.16264 2.77592 3.20847 2.69219 3.26086 2.57626C3.34598 2.41524 3.30014 2.27999 3.24121 2.16405C3.18228 2.04812 2.69774 0.888808 2.49475 0.412201C2.29832 -0.0579655 2.09533 0.0193217 1.95128 0.0193217C1.80722 0.0193217 1.65007 0 1.49292 0C1.33577 0 1.06731 0.0579658 0.84468 0.296269C0.622051 0.534573 0 1.10135 0 2.26066C0 2.53117 0.0523836 2.80168 0.124411 3.06574C0.366683 3.89659 0.897063 4.57929 0.988734 4.69523C1.1066 4.8498 2.65845 7.30368 5.10737 8.25046C7.56283 9.19079 7.56283 8.8752 8.00809 8.83656C8.45335 8.79791 9.43553 8.26978 9.63197 7.71589C9.83496 7.16843 9.83495 6.69827 9.77602 6.59521C9.71709 6.49861 9.55339 6.44064 9.31767 6.32471V6.34403Z" fill="#2E4790"/>
+</svg>
+
+                    </div>
+                    <span>0322 000 000</span>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-icon-circle" style="background: #25D366;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                    </div>
+                    <span>0322 000 000</span>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-icon-circle" style="background: #7B2CBF;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <span>0322 000 000</span>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-icon-circle" style="background: #e0e0e0;">
+                        <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_148_275)">
+<path d="M0.891959 0.125597L5.06042 4.73632C5.29784 4.99743 5.6404 5.14947 5.99654 5.14947C6.35267 5.14947 6.69524 5.00073 6.93266 4.73632L11.0333 0.204921C11.0672 0.168564 11.1079 0.138817 11.1486 0.115681C10.9756 0.0429673 10.7823 0 10.5822 0H1.41768C1.22435 0 1.0412 0.036357 0.875 0.105766C0.881783 0.112376 0.888567 0.118986 0.895351 0.125597H0.891959Z" fill="#2E4790"/>
+<path d="M11.783 0.647705C11.766 0.693978 11.7389 0.74025 11.7016 0.779912L7.60432 5.31131C7.19731 5.76082 6.61393 6.01862 6.00003 6.01862C5.38612 6.01862 4.80274 5.76082 4.39573 5.31131L0.227273 0.697283C0.227273 0.697283 0.213706 0.677452 0.206923 0.667536C0.0780364 0.875762 0.00341797 1.11704 0.00341797 1.37815V7.61833C0.00341797 8.38182 0.637675 8.99989 1.42117 8.99989H10.5891C11.3726 8.99989 12.0068 8.38182 12.0068 7.61833V1.38145C12.0068 1.11043 11.9254 0.862542 11.7897 0.647705H11.783Z" fill="#2E4790"/>
+</g>
+<defs>
+<clipPath id="clip0_148_275">
+<rect width="12" height="9" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+                    </div>
+                    <span>info@zoma.ge</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="footer-social">
+            <a href="#" class="footer-social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2E4790">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+            </a>
+            <a href="#" class="footer-social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2E4790">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+            </a>
+            <a href="#" class="footer-social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2E4790">
+                    <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                </svg>
+            </a>
+            <a href="#" class="footer-social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#2E4790" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="4" stroke="#2E4790" stroke-width="1.5" fill="none"/>
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="#2E4790"/>
+                </svg>
+            </a>
+            <a href="#" class="footer-social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2E4790">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+                    <circle cx="4" cy="4" r="2"/>
+                </svg>
+            </a>
+            <a href="#" class="footer-social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2E4790">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                <p>Copyright © zomashop.ge. Created By Integrals.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">წესები და პირობები</a>
+                <span>|</span>
+                <a href="#">კონფედენციალობის პოლიტიკა</a>
+                <span>|</span>
+                <a href="#">ნივთის დაბრუნების პოლიტიკა</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Mobile Bottom Navigation -->
+<div class="mobile-bottom-nav">
+    <svg class="mobile-nav-wave" viewBox="0 0 375 30" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 30C0 30 30 20 60 20C90 20 120 10 150 10C180 10 210 20 240 20C270 20 300 10 330 10C360 10 375 15 375 15V30H0V30Z" fill="white"/>
+    </svg>
+    <div class="mobile-nav-content">
+             <a href="#" class="mobile-nav-item mobile-nav-home">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.743 12.331L12.743 2.33103C12.364 1.90903 11.636 1.90903 11.257 2.33103L2.25699 12.331C2.12767 12.4747 2.04279 12.6529 2.01262 12.8438C1.98245 13.0348 2.00828 13.2304 2.08699 13.407C2.24699 13.768 2.60499 14 2.99999 14H4.99999V21C4.99999 21.2652 5.10535 21.5196 5.29289 21.7071C5.48042 21.8947 5.73478 22 5.99999 22H8.99999C9.26521 22 9.51956 21.8947 9.7071 21.7071C9.89464 21.5196 9.99999 21.2652 9.99999 21V17H14V21C14 21.2652 14.1054 21.5196 14.2929 21.7071C14.4804 21.8947 14.7348 22 15 22H18C18.2652 22 18.5196 21.8947 18.7071 21.7071C18.8946 21.5196 19 21.2652 19 21V14H21C21.1937 14.0009 21.3834 13.9453 21.546 13.8402C21.7087 13.735 21.8372 13.5848 21.916 13.4079C21.9947 13.231 22.0203 13.035 21.9896 12.8438C21.9589 12.6525 21.8732 12.4744 21.743 12.331Z" fill="white"/>
+            </svg>
+            <span>მთავარი</span>
+        </a>
+        <a href="#" class="mobile-nav-cart "style="margin-left: 40px; position: relative; left: 7px;">
+            <div class="mobile-cart-badge">0</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+        </a>
+        <a href="#" class="mobile-nav-item mobile-nav-profile" style="margin-left: 40px; margin-top: 30px;">
+            <svg style="color: #556AA5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#556AA5" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span style="color: #556AA5">პროფილი</span>
+        </a>
+    </div>
+    <div class="mobile-home-indicator"></div>
+</div>
