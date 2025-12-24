@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using zomage.Data;
-using System.IO;
-using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,49 +12,19 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-// Create database - simplified and safer approach
-// Run asynchronously to not block app startup
-_ = Task.Run(async () =>
+// Create database and seed data
+using (var scope = app.Services.CreateScope())
 {
-    await Task.Delay(1000); // Wait 1 second for app to start
-    try
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    
+    // Delete and recreate database in Development mode to apply seed data changes
+    if (app.Environment.IsDevelopment())
     {
-        Console.WriteLine("Starting database initialization...");
-        using (var scope = app.Services.CreateScope())
-        {
-            var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            Console.WriteLine("Database context created");
-            
-            // Only delete in development
-            if (app.Environment.IsDevelopment())
-            {
-                try
-                {
-                    db.Database.EnsureDeleted();
-                    Console.WriteLine("Old database deleted");
-                }
-                catch { /* Ignore delete errors */ }
-            }
-            
-            // Create database
-            try
-            {
-                db.Database.EnsureCreated();
-                Console.WriteLine("Database created successfully");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Database creation error: {ex.GetType().Name} - {ex.Message}");
-                // Continue without database
-            }
-        }
+        db.Database.EnsureDeleted();
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Database init error: {ex.GetType().Name} - {ex.Message}");
-        // Continue - app will work without database
-    }
-});
+    
+    db.Database.EnsureCreated();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
